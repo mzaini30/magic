@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Hello</title>
+		<meta charset="utf8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<script>const nama = "Zen"</script>
+		<script>console.log(`Hello ${nama}`)</script>
+
+<script  src="https://unpkg.com/vue@3.2.30/dist/vue.global.js"></script>
+
+<div class="app">
+        <p>Hai {{ nama }}</p>
+</div>
+
+<script type="module">
+        Vue.createApp({
+                data(){
+                        return {
+                                nama: "Zen"
+                        }
+                }
+        }).mount(".app")
+</script>
+
+		
+		<script>
+			(()=>{function n(e,t){let r=document.createElement("script");return t&&(r.type="module"),r.innerHTML=e,document.body.appendChild(r)}!async function(){var c,e="",e=(e+=document.head.innerHTML)+document.body.innerHTML;const t=new DOMParser,r=t.parseFromString(e,"text/html");for(c of r.querySelectorAll("script[type='magic']")){let t=c.src,r=(null!=magic&&magic.versi&&(t=c.src+"-"+magic.versi),!1);if("module"==c.dataset.type&&(r=!0),c.src)if(localStorage[t])n(localStorage[t],r);else{let e=await fetch(c.src);e=await e.text(),n(localStorage[t]=e,r)}else n(c.innerHTML,r)}}()})();
+		</script>
+	</body>
+</html>
