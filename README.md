@@ -20,10 +20,11 @@ Letakkan kode ini di atasnya `magic.min.js`. Boleh diletakkan berdekatan atau be
 
 ```javascript
 const magic = {
-	module: true,
 	versi: 2
 }
 ```
+
+Untuk yang bertipe module, sintaksnya adalah `<script type="magic" data-type="module">`
 
 ## Compress
 

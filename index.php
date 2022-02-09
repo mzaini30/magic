@@ -6,6 +6,11 @@
 		        new VConsole
 		</script>
 		<title>Hello</title>
+		<script>
+			const magic = {
+				versi: 2
+			}
+		</script>
 		<meta charset="utf8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -19,7 +24,7 @@
         <p>Hai {{ nama }}</p>
 </div>
 
-<script type="magic">
+<script type="magic" data-type="module">
         Vue.createApp({
                 data(){
                         return {
