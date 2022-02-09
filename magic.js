@@ -3,6 +3,13 @@
 function buat(isi){
 	let script = document.createElement("script")
 	script.innerHTML = isi
+	if (magic){
+		if (magic.module){
+			if (magic.module == true){
+				script.type = "module"
+			}
+		}
+	}
 	document.body.appendChild(script)
 }
 
@@ -16,13 +23,19 @@ async function jalankan(){
 
 	const semua_magic = dom.querySelectorAll("script[type='magic']")
 	for (let el of semua_magic){
-		if (el.src){
-			if (localStorage[el.src]){
-				buat(localStorage[el.src])
+		let namanya = el.src
+		if (magic){
+			if (magic.versi){
+				namanya = `${el.src}-${magic.versi}`
+			}
+		}
+		if (namanya){
+			if (localStorage[namanya]){
+				buat(localStorage[namanya])
 			} else {
-				let data = await fetch(el.src)
+				let data = await fetch(namanya)
 				data = await data.text()
-				localStorage[el.src] = data
+				localStorage[namanya] = data
 				buat(data)
 			}
 		} else {
