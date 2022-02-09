@@ -1,3 +1,9 @@
+function buat(isi){
+	let script = document.createElement("script")
+	script.innerHTML = isi
+	document.body.appendChild(script)
+}
+
 async function jalankan(){
 	let isi = ""
 	isi += document.head.innerHTML
@@ -9,21 +15,16 @@ async function jalankan(){
 	const semua_magic = dom.querySelectorAll("script[type='magic']")
 	for (let el of semua_magic){
 		if (el.src){
-			let script = document.createElement("script")
 			if (localStorage[el.src]){
-				script.innerHTML = localStorage[el.src]
-				document.body.appendChild(script)
+				buat(localStorage[el.src])
 			} else {
 				let data = await fetch(el.src)
 				data = await data.text()
 				localStorage[el.src] = data
-				script.innerHTML = data
-				document.body.appendChild(script)
+				buat(data)
 			}
 		} else {
-			const script = document.createElement("script")
-			script.innerHTML = el.innerHTML
-			document.body.appendChild(script)
+			buat(el.innerHTML)
 		}
 	}
 }
