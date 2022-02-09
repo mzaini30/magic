@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+		<!--script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script-->
 		<script>
-		        new VConsole
+		        // new VConsole
 		</script>
 		<title>Hello</title>
 		<script>
