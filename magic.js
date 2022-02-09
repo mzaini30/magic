@@ -3,14 +3,14 @@
 function buat(isi){
 	let script = document.createElement("script")
 	script.innerHTML = isi
-	if (magic){
+	if ("magic" in Object){
 		if (magic.module){
 			if (magic.module == true){
 				script.type = "module"
 			}
 		}
 	}
-	document.body.appendChild(script)
+	return document.body.appendChild(script)
 }
 
 async function jalankan(){
@@ -24,7 +24,7 @@ async function jalankan(){
 	const semua_magic = dom.querySelectorAll("script[type='magic']")
 	for (let el of semua_magic){
 		let namanya = el.src
-		if (magic){
+		if ("magic" in Object){
 			if (magic.versi){
 				namanya = `${el.src}-${magic.versi}`
 			}
