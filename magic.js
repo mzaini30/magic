@@ -20,7 +20,7 @@ async function jalankan(){
 	const semua_magic = dom.querySelectorAll("script[type='magic']")
 	for (let el of semua_magic){
 		let namanya = el.src
-		if (magic != null){
+		if ("magic" in Object){
 			if (magic.versi){
 				namanya = `${el.src}-${magic.versi}`
 			}
@@ -35,8 +35,8 @@ async function jalankan(){
 			} else {
 				let data = await fetch(el.src)
 				data = await data.text()
-				localStorage[namanya] = data
 				buat(data, module)
+				localStorage[namanya] = data
 			}
 		} else {
 			buat(el.innerHTML, module)
