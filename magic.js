@@ -1,3 +1,5 @@
+(() => {
+
 function buat(isi){
 	let script = document.createElement("script")
 	script.innerHTML = isi
@@ -29,3 +31,5 @@ async function jalankan(){
 	}
 }
 jalankan()
+
+})()
