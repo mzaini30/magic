@@ -24,7 +24,7 @@ Letakkan kode ini di atasnya `magic.min.js`. Boleh diletakkan berdekatan atau be
 
 ```javascript
 const magic = {
-	versi: 2
+  versi: 2
 }
 ```
 
