@@ -1,5 +1,9 @@
 # Magic
 
+<p align="center">
+<img src="https://i.postimg.cc/C5mymjjF/cd37629be2697c4c497ff3c8bcd560af.jpg">
+</p>
+
 ## Cara Menggunakan
 
 1. Download `magic.min.js`
