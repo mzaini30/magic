@@ -6,7 +6,7 @@
 
 ## Cara Menggunakan
 
-1. Download `magic.min.js`
+1. Download [`magic.min.js`](https://raw.githubusercontent.com/mzaini30/magic/master/magic.min.js)
 2. Letakkan `magic.min.js` secara inline dan di atas `</body>`. Seperti ini:
 
 	```html
