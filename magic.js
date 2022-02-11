@@ -68,10 +68,11 @@
 				if (localStorage[namanya]) {
 					buat(localStorage[namanya], el.dataset);
 				} else {
-					let data = await fetch(el.src);
-					data = await data.text();
-					buat(data, el.dataset);
-					localStorage[namanya] = data;
+					let data = await fetch(el.src).then(x => x.text()).catch(x => console.log(x))
+					if (data) {
+						buat(data, el.dataset);
+						localStorage[namanya] = data;
+					}
 				}
 			} else {
 				// kalau nggak ada src, pakai inner html nya script

@@ -15,6 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
+		<script data-async='async' data-crossorigin='anonymous' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2408628281705149' type="magic"></script>
 		<script src="tes.js" type="magic" data-async='async' data-crossorigin='anonymous'></script>
 		<script type="magic">const nama = "Zen"</script>
 		<script type="magic">console.log(`Hello ${nama}`)</script>
