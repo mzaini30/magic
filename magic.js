@@ -1,48 +1,95 @@
 (() => {
+	function buat(isi, dataset) {
+		// buat elemen script
+		let script = document.createElement("script");
 
-function buat(isi, module){
-	let script = document.createElement("script")
-	if (module){
-		script.type = "module"
-	}
-	script.innerHTML = isi
-	return document.body.appendChild(script)
-}
-
-async function jalankan(){
-	let isi = ""
-	isi += document.head.innerHTML
-	isi += document.body.innerHTML
-
-	const parser = new DOMParser
-	const dom = parser.parseFromString(isi, 'text/html')
-
-	const semua_magic = dom.querySelectorAll("script[type='magic']")
-	for (let el of semua_magic){
-		let namanya = el.src
-		if ("magic" in Object){
-			if (magic.versi){
-				namanya = `${el.src}-${magic.versi}`
+		// ambil attribute data-
+		if (dataset){
+			for (let n in dataset){
+				script[n] = dataset[n]
 			}
 		}
-		let module = false
-		if (el.dataset.type == "module"){
-			module = true
+
+		// diisi scriptnya
+		script.innerHTML = isi;
+
+		// tanam ke body
+		return document.body.appendChild(script);
+	}
+
+	async function jalankan() {
+		// ambil semua elemen di page
+		let isi = "";
+		isi += document.head.innerHTML;
+		isi += document.body.innerHTML;
+
+		// ubah jadi dom
+		const parser = new DOMParser();
+		const dom = parser.parseFromString(isi, "text/html");
+
+		// ambil yang type magic
+		const semua_magic = dom.querySelectorAll("script[type='magic']");
+
+		// ambil versi
+		let versi = 'base'
+		if (typeof magic != 'undefined') {
+			if (magic.versi) {
+				versi = magic.versi
+			}
 		}
-		if (el.src){
-			if (localStorage[namanya]){
-				buat(localStorage[namanya], module)
+
+		// ringkasan
+		/*
+			{
+				versi: 'base',
+				link: [
+					'satu.js',
+					'dua.js'
+				]	
+			}
+		*/
+		let ringkasan = {
+			versi: '',
+			link: []
+		}
+		ringkasan.versi = versi
+
+		// loop semua magic
+		for (let el of semua_magic) {
+
+			// linknya jadi key localStorage
+			let namanya = `${el.src}-${versi}`;
+
+			// jika ada src
+			if (el.src) {
+
+				ringkasan.link = [...ringkasan.link, namanya]
+
+				if (localStorage[namanya]) {
+					buat(localStorage[namanya], el.dataset);
+				} else {
+					let data = await fetch(el.src);
+					data = await data.text();
+					buat(data, el.dataset);
+					localStorage[namanya] = data;
+				}
 			} else {
-				let data = await fetch(el.src)
-				data = await data.text()
-				buat(data, module)
-				localStorage[namanya] = data
+				// kalau nggak ada src, pakai inner html nya script
+				buat(el.innerHTML, el.dataset);
 			}
-		} else {
-			buat(el.innerHTML, module)
 		}
-	}
-}
-jalankan()
 
-})()
+		// bersih-bersih localStorage
+		if (localStorage.data_magic){
+			let data_magic = JSON.parse(localStorage.data_magic)
+			if (data_magic.versi != ringkasan.versi){
+				for (let x of data_magic.link){
+					localStorage.removeItem(x)
+				}
+			}
+		}
+		localStorage.data_magic = JSON.stringify(ringkasan)
+
+	}
+	jalankan();
+})();

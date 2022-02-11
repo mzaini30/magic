@@ -8,13 +8,14 @@
 		<title>Hello</title>
 		<script>
 			const magic = {
-				versi: 2
+				versi: 14
 			}
 		</script>
 		<meta charset="utf8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
+		<script src="tes.js" type="magic" data-async='async' data-crossorigin='anonymous'></script>
 		<script type="magic">const nama = "Zen"</script>
 		<script type="magic">console.log(`Hello ${nama}`)</script>
 
@@ -36,7 +37,7 @@
 
 		
 		<script>
-			<?php include "magic.min.js" ?>
+			<?php include "magic.js" ?>
 		</script>
 	</body>
 </html>

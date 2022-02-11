@@ -27,7 +27,7 @@
 
 		
 		<script>
-			<?php include "magic.min.js" ?>
+			<?php include "magic.js" ?>
 		</script>
 	</body>
 </html>

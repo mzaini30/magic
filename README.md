@@ -28,7 +28,21 @@ const magic = {
 }
 ```
 
-Untuk yang bertipe module, sintaksnya adalah `<script type="magic" data-type="module">`
+## Register Attribute
+
+Untuk register attribute (selain `src`), gunakan prefix `data-`. Contoh:
+
+_Before:_
+
+```html
+<script src="fake.js" type="module" async="async" crossorigin="anonymous">
+```
+
+_After:_
+
+```html
+<script src="fake.js" type="magic" data-type="module" data-async="async" data-crossorigin="anonymous">
+```
 
 ## Compress
 
