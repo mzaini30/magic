@@ -4,6 +4,8 @@
 <img src="https://i.postimg.cc/C5mymjjF/cd37629be2697c4c497ff3c8bcd560af.jpg">
 </p>
 
+> Catatan: Tools ini nggak bekerja pada `document.write`.
+
 ## Cara Menggunakan
 
 1. Download [`magic.min.js`](https://raw.githubusercontent.com/mzaini30/magic/master/magic.min.js)
